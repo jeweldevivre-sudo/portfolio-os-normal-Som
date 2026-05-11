@@ -571,8 +571,8 @@ const [deletedPortfolioSymbols, setDeletedPortfolioSymbols] = useState<string[]>
             type: normalizeHoldingType(h.type),
             source: normalizeHoldingType(h.type),
             osType: normalizeHoldingType(h.type),
-            units: h.units === "" ? "" : Number(h.units),
-            avgCost: h.avgCost === "" ? "" : Number(h.avgCost),
+            units: h.units === "" ? "" : num(h.units),
+            avgCost: h.avgCost === "" ? "" : num(h.avgCost),
             targetWeight: h.targetWeight === "" ? "" : targetPct(h.targetWeight),
             note: h.note || "",
           })),
@@ -2414,12 +2414,14 @@ const [deletedPortfolioSymbols, setDeletedPortfolioSymbols] = useState<string[]>
                                 }}
                               >
                                 <EInput
-                                  val={
-                                    h.targetWeight === "" || h.targetWeight === null || h.targetWeight === undefined
-                                      ? ""
-                                      : fmt(targetPct(h.targetWeight), 2)
-                                  }
-                                  onChange={(v) => updateHolding(i, "targetWeight", v)}
+                                  val={h.targetWeight ?? ""}
+                                  onChange={(v) => {
+                                    const clean = String(v || "")
+                                      .replace("%", "")
+                                      .replace(/,/g, "")
+                                      .trim();
+                                    updateHolding(i, "targetWeight", clean);
+                                  }}
                                   placeholder="0.00"
                                   width="70px"
                                 />
