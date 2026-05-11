@@ -19,7 +19,7 @@ import {
   PolarAngleAxis,
 } from "recharts";
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwPi7SVkjZ-jrgVLEPv2-0Vabs7gaBLbrsCaklPCAdd1OV0Hku9xl5lwPrRlAvVurs5/exec";
+  "https://script.google.com/macros/s/AKfycbzHXQGYnWrQyzq3mpZYRtaUN5IGdUctggdvIW5_jlOxONU1lCbKsabQ6Xioqd5gsCKh/exec";
 
 const DEFAULT_TARGETS = {
   totalWealth: 5000000,
